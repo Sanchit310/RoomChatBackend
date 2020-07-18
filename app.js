@@ -35,7 +35,7 @@ var server = app.listen(port, () => {
 
 var io = socketio.listen(server);
 
-io.on("connection", function (socket) {
+io.once("connection", function (socket) {
   //The moment one of your client connected to socket.io server it will obtain socket id
   //Let's print this out.
   console.log(`Connection : SocketId = ${socket.id}`);
