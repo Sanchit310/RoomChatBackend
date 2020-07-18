@@ -42,7 +42,7 @@ io.on("connection", function (socket) {
   //Since we are going to use userName through whole socket connection, Let's make it global.
   var userName = "";
 
-  socket.once("subscribe", function (data) {
+  socket.on("subscribe", function (data) {
     console.log("subscribe trigged");
     const room_data = JSON.parse(data);
     userName = room_data.userName;
