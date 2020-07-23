@@ -1,11 +1,3 @@
-/**
- * @author Joyce Hong
- * @email soja0524@gmail.com
- * @create date 2019-09-02 20:51:10
- * @modify date 2019-09-02 20:51:10
- * @desc socket.io server !
- */
-
 const express = require("express");
 const bodyParser = require("body-parser");
 
@@ -78,6 +70,7 @@ io.on("connection", function (socket) {
     const messageData = JSON.parse(data);
     const messageContent = messageData.messageContent;
     const roomName = messageData.roomName;
+    const isImage = messageData.isImage;
 
     console.log(`[Room Number ${roomName}] ${userName} : ${messageContent}`);
     // Just pass the data that has been passed from the writer socket
@@ -86,6 +79,7 @@ io.on("connection", function (socket) {
       userName: userName,
       messageContent: messageContent,
       roomName: roomName,
+      isImage: isImage,
     };
     socket.broadcast
       .to(`${roomName}`)
